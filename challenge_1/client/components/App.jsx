@@ -15,10 +15,11 @@ class App extends React.Component {
     this.handlePageClick = this.handlePageClick.bind(this);
   }
 
-  updateData(newData, newPage) {
+  updateData(newData, newPage, newCurrentPage) {
     this.setState({
       data: newData,
       pageCount: newPage,
+      currentPage: newCurrentPage,
     });
   }
 
@@ -55,6 +56,7 @@ class App extends React.Component {
           containerClassName="pagination"
           subContainerClassName="pages pagination"
           activeClassName="active"
+          forcePage={currentPage}
         />
       </div>
     );
