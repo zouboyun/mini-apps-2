@@ -9,24 +9,26 @@ class App extends React.Component {
       view: 'blank',
       type: 'bar',
       data: {},
+      currency: '',
     };
     this.toggleView = this.toggleView.bind(this);
     this.renderChart = this.renderChart.bind(this);
   }
 
-  toggleView(newView, newType, data) {
+  toggleView(newView, newType, data, currency) {
     this.setState({
       view: newView,
       type: newType,
       data: data,
+      currency: currency,
     });
   }
 
   renderChart() {
-    const { view, type, data } = this.state;
+    const { view, type, data, currency } = this.state;
     if (view === 'chart') {
       return (
-        <Chart type={type} data={data}/>
+        <Chart type={type} data={data} currency={currency}/>
       );
     }
   }

@@ -7,7 +7,7 @@ class Config extends React.Component {
     super(props);
     this.state = {
       charttype: 'bar',
-      currency: 'usd',
+      currency: 'cny',
       start: '2017-09-01',
       end: '2018-09-01',
     };
@@ -28,7 +28,7 @@ class Config extends React.Component {
     if ((new Date(start).getTime() < new Date(end).getTime())) {
       axios.get(`https://api.coindesk.com/v1/bpi/historical/close.json?currency=${currency}&&start=${start}&end=${end}`)
         .then(result => {
-          toggleView('chart', charttype, result.data.bpi);
+          toggleView('chart', charttype, result.data.bpi, currency);
         });
     } else {
       alert('please input correct start and end dates.');
