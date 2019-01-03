@@ -48,11 +48,7 @@ class Bowling {
     } else if (throwNum === 2) {
       if (this.frames[frameNum].status !== 'strike') {
         const currentScore = this.frames[frameNum].first;
-        if (currentScore + score === 10) {
-          // spare case
-          this.frames[frameNum].second = score;
-          this.frames[frameNum].status = 'spare';
-        } else if (currentScore + score > 10) {
+        if (currentScore + score >= 10) {
           // spare case
           score = 10 - currentScore;
           this.frames[frameNum].second = score;

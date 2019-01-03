@@ -50,9 +50,9 @@ class Pins extends React.Component {
           updateState('throwCount', 1);
           updateState('roundCount', roundCount + 1);
         }
-      } else {
-        alert('game over!');
-      }
+      } else  if (this.game.getFrame()[roundCount].status === 'strike' || throwCount === 2) {
+          alert('game over!');
+        }
     } else {
       alert('please select a pin quantity.');
     }
