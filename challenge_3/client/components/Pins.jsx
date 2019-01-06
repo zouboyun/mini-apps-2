@@ -37,7 +37,8 @@ class Pins extends React.Component {
     if (pinCount.length > 0) {
       const throwCount = getState('throwCount');
       const roundCount = getState('roundCount');
-      if (roundCount < 10) {
+      console.log(roundCount);
+      if (roundCount < 9) {
         if (throwCount < 2 && this.game.getFrame()[roundCount].status !== 'strike') {
           this.game.setScore(roundCount, throwCount + 1, Number(pinCount));
           this.game.addBonus();
@@ -50,8 +51,15 @@ class Pins extends React.Component {
           updateState('throwCount', 1);
           updateState('roundCount', roundCount + 1);
         }
-      } else {
-        alert('game over!');
+      } else if (this.game.getFrame()[roundCount].status === 'strike') {
+          alert('game over!!!');
+      } else if (throwCount === 1) {
+        this.game.setScore(roundCount, throwCount + 1, Number(pinCount));
+        this.game.addBonus();
+        updateState('scores', this.game.getScore());
+        updateState('throwCount', throwCount + 1);
+      } else if (throwCount === 2) {
+        alert('game over!!!');
       }
     } else {
       alert('please select a pin quantity.');
